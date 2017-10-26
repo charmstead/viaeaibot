@@ -86,17 +86,17 @@ public class networkRequest {
                     final FacebookClient sendClient =
                            new DefaultFacebookClient(fbConfig.getPageAccessToken(), Version.VERSION_2_7);
                   
-                    com.viaeaibot.viaeaibot.message.Message viaeaiMsg = null;
+                    com.viaeaibot.viaeaibot.message.Message  viaeaiMsg = new com.viaeaibot.viaeaibot.message.Message()
+                                                                                .setMessageId(Long.parseLong(entry.getId()))
+                                                                                .setMessage_time(entry.getTime()+"")
+                                                                                .setCreatorId(Long.parseLong(item.getSender().getId()));
                     Message simpleMsg=null;
                     if(!isNull(item.getMessage())){
                         
-                        viaeaiMsg = new com.viaeaibot.viaeaibot.message.Message()
-                                                    .setMessageId(Long.parseLong(entry.getId()))
-                                                    .setMessage_time(entry.getTime()+"")
-                                                    .setCreatorId(Long.parseLong(item.getSender().getId()));
+                       
                         
                         if(!isNull(item.getMessage().getText())){
-                            viaeaiMsg.setMessageBody("conversion: "+item.getMessage().getText());
+                            viaeaiMsg.setMessageBody(item.getMessage().getText());
                         }
                         if(!isNull(item.getMessage().getAttachments()) && item.getMessage().getAttachments().size()>0){
                             viaeaiMsg.setMessageBody("conversion: "+item.getMessage().getAttachments().get(0).getUrl());
@@ -104,10 +104,10 @@ public class networkRequest {
                         simpleMsg = msgMapper.mapToFacebookMessage(viaeaiMsg);
                     }
                     
-//                    System.out.println("THIS CUSTOM MESSAGE TYPE.\n\n"
-//                                +objMap.writerWithDefaultPrettyPrinter().writeValueAsString(simpleMsg)
-//                                +"\nIS MAPPED TO>>>>>>>>>>>"
-//                            );
+                    System.out.println("THIS CUSTOM MESSAGE TYPE.\n\n"
+                                +objMap.writerWithDefaultPrettyPrinter().writeValueAsString(viaeaiMsg)
+                                +"\nIS MAPPED TO>>>>>>>>>>>"
+                            );
                     
                     
                     

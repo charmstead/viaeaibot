@@ -102,9 +102,10 @@ public class networkRequest {
                                         mapper.toJson(simpleMsg));
                     
               
+                    IdMessageRecipient recipient = new IdMessageRecipient(item.getSender().getId());
                     
                     System.out.println("Sending the message to facebook.");
-                    sendClient.publish("me/messages", GraphResponse.class, Parameter.with("recipient", item.getSender().getId()),
+                    sendClient.publish("me/messages", GraphResponse.class, Parameter.with("recipient",recipient ),
                     Parameter.with("message", simpleMsg));
                 
                 

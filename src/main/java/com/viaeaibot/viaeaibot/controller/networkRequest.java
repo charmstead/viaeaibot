@@ -109,7 +109,7 @@ public class networkRequest {
                 
                 
                     
-                    if(!isNull(item.getMessage())&&!isNull(item.getMessage().getText())){
+                    if(!isNull(item.getMessage())&&!isNull(item.getMessage().getText()) && !item.getMessage().isEcho()){
                         sendClient.publish("me/messages", GraphResponse.class, Parameter.with("recipient",recipient ),
                         Parameter.with("message", simpleMsg));
                     }

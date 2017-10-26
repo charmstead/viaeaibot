@@ -119,19 +119,33 @@ public class FacebookMessageMapper {
                     //gets the sender id
                     long senderId = Long.parseLong(item.getSender().getId());
                     long recipientId = Long.parseLong(item.getRecipient().getId());
-                    boolean isBot =item.getMessage().isEcho();
-                    String body =null;
-                    
+                    boolean isBot =true;
+                    String body=null;
+                    String fileUrl=null;
                               
                     // sets the messageBody
-                    if (item.getMessage() != null && item.getMessage().getText() != null) {
-                      body = item.getMessage().getText();
-                    }
+                    if (!isNull(item.getMessage())){
+                    
+                        if(!isNull(item.getMessage().getText())){
+                            body = item.getMessage().getText();
+                        }
+                       
+                        isBot=item.getMessage().isEcho();
+                            
+                        
+                        fileUrl=hasAttachMent(item.getMessage());    
+                    }     
+                    
+                 
+                      
+                      
+                    
+                    
                     
                     //The Graph API does not support sending messages with attachments.
                     //Either the message hasBody or it is an Attachment
                     //i.e You may get a text or attachment but not both
-                    String fileUrl = hasAttachMent(item.getMessage());
+                    
                     
                     MessageType msgType = (fileUrl !=null)?com.viaeaibot.viaeaibot.message.Message.getFileType(fileUrl):MessageType.text;
                     

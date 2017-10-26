@@ -22,14 +22,14 @@ public class FrontFacebookMessengerSettings
      */
     
     // members //
-    @Value("{CALLBACK_URL}")
+    @Value("${CALLBACK_URL}")
     public String callbackURL;
     
     
-    @Value("{VERIFYTOKEN}")
+    @Value("${VERIFYTOKEN}")
     public String  verifyToken;
     
-     @Value("{ACCESSTOKEN}")
+     @Value("${ACCESSTOKEN}")
     public String pageAccessToken;
      // end members //
 

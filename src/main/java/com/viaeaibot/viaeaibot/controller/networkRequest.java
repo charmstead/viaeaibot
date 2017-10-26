@@ -53,14 +53,16 @@ public class networkRequest {
                                                      @RequestParam("hub.verify_token") String verifyToken,
                                                      @RequestParam("hub.challenge") String challenge) throws IOException{
         
-        if ("subscribe".equals(mode) //
-            && fbConfig.getVerifyToken().equals(verifyToken)
+        System.out.println("the challenge is "+fbConfig.getVerifyToken() );
+        if ("subscribe".equals(mode.trim()) //
+            && fbConfig.getVerifyToken().equals(verifyToken.trim())
             && !isNull(challenge))
         {
+            System.out.println("what is happening");
             resp.getWriter().append(challenge);
             
         } else {
-            
+            System.out.println("what is happening");
           resp.setStatus(Response.SC_BAD_REQUEST);
           
         }
@@ -130,16 +132,7 @@ public class networkRequest {
 
         }   
         
-        
-        
-                
-      
-       
-       
-           
-                    
-           
-       
+               
 //              sendClient.publish("me/messages", GraphResponse.class, Parameter.with("recipient", recipient),
 //                Parameter.with("message", simpleMsg));
         

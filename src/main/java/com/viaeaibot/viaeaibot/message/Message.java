@@ -2,9 +2,10 @@ package com.viaeaibot.viaeaibot.message;
 import java.util.Calendar;
 
 import com.viaeaibot.viaeaibot.messageTypes.MessageType;
+import java.io.Serializable;
 
 
-public class Message 
+public class Message implements Serializable
 {		
 	// members //
 	protected long id;

@@ -95,9 +95,11 @@ public class networkRequest {
                     System.out.println("mapping custom message type to facebook message type.");
                     Message simpleMsg = msgMapper.mapToFacebookMessage(viaeaiMsg);
                     
-                    System.out.println("This is the mapped message\n"+
-                                        new ObjectMapper().writeValueAsString(simpleMsg));
-                    //Message simpleMsgAttachment = msgMapper.mapToFacebookMessageWithAttachment(new viaeai.Message());
+                    System.out.println("custom message succefully mapped to facebook type");
+//                    System.out.println("This is the mapped message\n"+
+//                                        new ObjectMapper().writeValueAsString(simpleMsg));
+                    
+              
                     
                     System.out.println("Sending the message to facebook.");
                     sendClient.publish("me/messages", GraphResponse.class, Parameter.with("recipient", entry.getId()),

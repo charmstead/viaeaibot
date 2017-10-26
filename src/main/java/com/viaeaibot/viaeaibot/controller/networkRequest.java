@@ -85,7 +85,7 @@ public class networkRequest {
                            new DefaultFacebookClient(fbConfig.getPageAccessToken(), Version.VERSION_2_7);
                   
                     com.viaeaibot.viaeaibot.message.Message viaeaiMsg = null;
-                    
+                    Message simpleMsg=null;
                     if(!isNull(item.getMessage())&&!isNull(item.getMessage().getText())){
                         viaeaiMsg = new com.viaeaibot.viaeaibot.message.Message()
                                                     .setIsFile(false)
@@ -93,10 +93,11 @@ public class networkRequest {
                                                     .setMessageId(Long.parseLong(entry.getId()))
                                                     .setMessage_time(body)
                                                     .setCreatorId(Long.parseLong(item.getSender().getId()));
+                        simpleMsg = msgMapper.mapToFacebookMessage(viaeaiMsg);
                     }
                     
                     System.out.println("mapping custom message type to facebook message type.");
-                    Message simpleMsg = msgMapper.mapToFacebookMessage(viaeaiMsg);
+                    
                     
                     
                     mapper.toJson(simpleMsg);
@@ -112,7 +113,7 @@ public class networkRequest {
                 
                 
                     
-                    if(!isNull(item.getMessage())&&!isNull(item.getMessage().getText()) && !item.getMessage().isEcho()){
+                    if(!isNull(item.getMessage())&&!isNull(item.getMessage().getText()) &&!isNull(simpleMsg) && !item.getMessage().isEcho()){
                         sendClient.publish("me/messages", GraphResponse.class, Parameter.with("recipient",recipient ),
                         Parameter.with("message", simpleMsg));
                     }

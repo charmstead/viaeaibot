@@ -84,13 +84,16 @@ public class networkRequest {
                     final FacebookClient sendClient =
                            new DefaultFacebookClient(fbConfig.getPageAccessToken(), Version.VERSION_2_7);
                   
-                    com.viaeaibot.viaeaibot.message.Message viaeaiMsg = new com.viaeaibot.viaeaibot.message.Message()
+                    com.viaeaibot.viaeaibot.message.Message viaeaiMsg = null;
+                    
+                    if(!isNull(item.getMessage())&&!isNull(item.getMessage().getText())){
+                        viaeaiMsg = new com.viaeaibot.viaeaibot.message.Message()
                                                     .setIsFile(false)
                                                     .setMessageBody("This is a test message for the conversion")
                                                     .setMessageId(Long.parseLong(entry.getId()))
                                                     .setMessage_time(body)
                                                     .setCreatorId(Long.parseLong(item.getSender().getId()));
-                                                    
+                    }
                     
                     System.out.println("mapping custom message type to facebook message type.");
                     Message simpleMsg = msgMapper.mapToFacebookMessage(viaeaiMsg);

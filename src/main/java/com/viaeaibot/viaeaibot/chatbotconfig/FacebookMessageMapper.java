@@ -169,7 +169,7 @@ public class FacebookMessageMapper {
      */
     private String hasAttachMent(MessageItem msg){
           
-        if(!isNull(msg.getAttachments()) || msg.getAttachments().size()>0){
+        if(!isNull(msg.getAttachments()) && msg.getAttachments().size()>0){
             return msg.getAttachments().get(0).getUrl();
         }
         

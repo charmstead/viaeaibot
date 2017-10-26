@@ -102,16 +102,7 @@ public class networkRequest {
                         simpleMsg = msgMapper.mapToFacebookMessage(viaeaiMsg);
                     }
                     
-                    System.out.println("mapping custom message type to facebook message type.");
                     
-                    
-                    
-                    Object map = simpleMsg;
-                    System.out.println("This is the mapped message\n"+
-//                            mapper.toJson(simpleMsg)+
-                                       new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(map));
-                    System.out.println("custom message succefully mapped to facebook type");
-              
                     IdMessageRecipient recipient = new IdMessageRecipient(item.getSender().getId());
                     
                     System.out.println("Sending the message to facebook.");
@@ -120,6 +111,23 @@ public class networkRequest {
                 
                     
                     if(!isNull(item.getMessage())&&!isNull(item.getMessage().getText()) &&!isNull(simpleMsg) && !item.getMessage().isEcho()){
+                        
+                        
+                        System.out.println("mapping custom message type to facebook message type.");
+                    
+                    
+
+                        Object map = simpleMsg;
+                        System.out.println("This is the mapped message\n"+
+        //                            mapper.toJson(simpleMsg)+
+                                           new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(map));
+                        System.out.println("custom message succefully mapped to facebook type");
+              
+                        
+                        
+                        
+                        
+                        
                         sendClient.publish("me/messages", GraphResponse.class, Parameter.with("recipient",recipient ),
                         Parameter.with("message", simpleMsg));
                     }

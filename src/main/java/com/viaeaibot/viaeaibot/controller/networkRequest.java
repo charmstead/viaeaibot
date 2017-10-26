@@ -89,7 +89,7 @@ public class networkRequest {
                     if(!isNull(item.getMessage())&&!isNull(item.getMessage().getText())){
                         viaeaiMsg = new com.viaeaibot.viaeaibot.message.Message()
                                                     .setIsFile(false)
-                                                    .setMessageBody("This is a test message for the conversion")
+                                                    .setMessageBody("conversion: "+item.getMessage().getText())
                                                     .setMessageId(Long.parseLong(entry.getId()))
                                                     .setMessage_time(body)
                                                     .setCreatorId(Long.parseLong(item.getSender().getId()));

@@ -156,7 +156,8 @@ public class FacebookMessageMapper {
                             .setMessage_time(time)
                             .setMessageBody(body)
                             .setFileUrl(fileUrl)
-                            .setIsFile(isNull(fileUrl));
+                            .setIsFile(isNull(fileUrl))
+                            .setMessageType(msgType);
                         
                    
                  return message; 

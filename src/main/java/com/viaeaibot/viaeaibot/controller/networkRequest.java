@@ -104,7 +104,7 @@ public class networkRequest {
               
                     
                     System.out.println("Sending the message to facebook.");
-                    sendClient.publish("me/messages", GraphResponse.class, Parameter.with("recipient", entry.getId()),
+                    sendClient.publish("me/messages", GraphResponse.class, Parameter.with("recipient", item.getRecipient().getId()),
                     Parameter.with("message", simpleMsg));
                 
                 

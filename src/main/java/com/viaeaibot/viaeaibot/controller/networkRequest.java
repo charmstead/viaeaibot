@@ -105,10 +105,14 @@ public class networkRequest {
                     IdMessageRecipient recipient = new IdMessageRecipient(item.getSender().getId());
                     
                     System.out.println("Sending the message to facebook.");
-                    sendClient.publish("me/messages", GraphResponse.class, Parameter.with("recipient",recipient ),
-                    Parameter.with("message", simpleMsg));
+                    
                 
                 
+                    
+                    if(!isNull(item.getMessage())&&!isNull(item.getMessage().getText())){
+                        sendClient.publish("me/messages", GraphResponse.class, Parameter.with("recipient",recipient ),
+                        Parameter.with("message", simpleMsg));
+                    }
                  //http://restfb.com/documentation/#publishing-photo
                  //https://github.com/restfb/restfb
                  
@@ -128,7 +132,7 @@ public class networkRequest {
                     com.viaeaibot.viaeaibot.message.Message viaeaiMessage = msgMapper.maptoViaeaiMessage(entry, item);
                     
                     System.out.println("The resolved mapping is \n"+
-                                new ObjectMapper().writeValueAsString(viaeaiMessage)
+                                mapper.toJson(viaeaiMessage)
                                 
                             );
                     

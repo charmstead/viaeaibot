@@ -136,12 +136,7 @@ public class FacebookMessageMapper {
                         fileUrl=hasAttachMent(item.getMessage());    
                     }     
                     
-                 
-                      
-                      
-                    
-                    
-                    
+                                     
                     //The Graph API does not support sending messages with attachments.
                     //Either the message hasBody or it is an Attachment
                     //i.e You may get a text or attachment but not both

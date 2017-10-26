@@ -104,18 +104,24 @@ public class networkRequest {
                         simpleMsg = msgMapper.mapToFacebookMessage(viaeaiMsg);
                     }
                     
-                    System.out.println("THIS CUSTOM MESSAGE TYPE.\n\n"
+                    
+                    
+                    synchronized(System.out){
+                        System.out.println("THIS CUSTOM MESSAGE TYPE.\n\n"
                                 +objMap.writerWithDefaultPrettyPrinter().writeValueAsString(viaeaiMsg)
                                 +"\nIS MAPPED TO>>>>>>>>>>>"
                             );
                     
                     
-                    
-                    Object map = new ObjectMapper().readValue(mapper.toJson(simpleMsg), Object.class);
-                    System.out.println(
-                                new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(map));
-                    System.out.println("\n\n\ncustom message succefully mapped to facebook type");
+
+                            Object map = new ObjectMapper().readValue(mapper.toJson(simpleMsg), Object.class);
+                            System.out.println(
+                                        new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(map));
+                            System.out.println("\n\n\ncustom message succefully mapped to facebook type");
               
+                    }
+                    
+                    
                     IdMessageRecipient recipient = new IdMessageRecipient(item.getSender().getId());
                     
                     System.out.println("\n\nSending the message to facebook.");
@@ -131,6 +137,7 @@ public class networkRequest {
                         
                          //You can do whatever you want with the object
                     //perhaps it correspond to a specific action in your system
+                    synchronized(System.out){
                         System.out.println("mapping facebook message type to custom message type");
                         com.viaeaibot.viaeaibot.message.Message viaeaiMessage = msgMapper.maptoViaeaiMessage(entry, item);
                         
@@ -140,6 +147,8 @@ public class networkRequest {
                                     new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(viaeaiMessage)
                                                 +"\n\n\n\n"                    
                                 );
+                    }
+                        
                     }
                  //http://restfb.com/documentation/#publishing-photo
                  //https://github.com/restfb/restfb
@@ -160,10 +169,6 @@ public class networkRequest {
                 }//end of messagingItem Loop
 
         }   
-        
-               
-//              sendClient.publish("me/messages", GraphResponse.class, Parameter.with("recipient", recipient),
-//                Parameter.with("message", simpleMsg));
         
         
     }

@@ -102,8 +102,8 @@ public class FacebookMessageMapper {
     /**
      * The facebook webhookObject can contain entryList of several messages.
      * You'll have to 
-     * @param whObject webhookObject pageRequest sent from FB to your bot.
-     * @return Set of all messages in the webhookObject converted to viaeai.Message
+     * @param 
+     * @return 
      */
     public com.viaeaibot.viaeaibot.message.Message maptoViaeaiMessage(WebhookEntry entry,MessagingItem item){
         

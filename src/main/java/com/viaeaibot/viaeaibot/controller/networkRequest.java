@@ -109,11 +109,11 @@ public class networkRequest {
                     Object map = new ObjectMapper().readValue(mapper.toJson(simpleMsg), Object.class);
                     System.out.println("This is the mapped message\n"+
                                 new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(map));
-                    System.out.println("custom message succefully mapped to facebook type");
+                    System.out.println("\n\n\ncustom message succefully mapped to facebook type");
               
                     IdMessageRecipient recipient = new IdMessageRecipient(item.getSender().getId());
                     
-                    System.out.println("Sending the message to facebook.");
+                    System.out.println("\n\nSending the message to facebook.");
                     
                 
                 
@@ -142,7 +142,7 @@ public class networkRequest {
                     
                     System.out.println("The resolved mapping is \n"+
                                 new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(viaeaiMessage)
-                                                                
+                                            +"\n\n\n\n"                    
                             );
                     
                 

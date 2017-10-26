@@ -135,8 +135,8 @@ public class networkRequest {
                     com.viaeaibot.viaeaibot.message.Message viaeaiMessage = msgMapper.maptoViaeaiMessage(entry, item);
                     
                     System.out.println("The resolved mapping is \n"+
-                                mapper.toJson(viaeaiMessage)
-                                
+                                new ObjectMapper().writeValueAsString(viaeaiMessage)
+                                                                
                             );
                     
                 

@@ -106,9 +106,10 @@ public class networkRequest {
                     
                     
                     
-                    
+                    Object map = simpleMsg;
                     System.out.println("This is the mapped message\n"+
-                                       new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(simpleMsg));
+//                            mapper.toJson(simpleMsg)+
+                                       new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(map));
                     System.out.println("custom message succefully mapped to facebook type");
               
                     IdMessageRecipient recipient = new IdMessageRecipient(item.getSender().getId());

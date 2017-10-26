@@ -57,7 +57,7 @@ public class Message implements Serializable
 	
 	public MessageType getType()
 	{
-		return this.getType();
+            return this.type;
 	}
 	
 	public String getTime()

@@ -102,19 +102,25 @@ public class networkRequest {
                             viaeaiMsg.setMessageBody("conversion: "+item.getMessage().getAttachments().get(0).getUrl());
                         }
                         simpleMsg = msgMapper.mapToFacebookMessage(viaeaiMsg);
+                        
+                        
+                        
+                        
+                        
+                         
+                            System.out.println("THIS CUSTOM MESSAGE TYPE.\n\n"
+                                        +objMap.writerWithDefaultPrettyPrinter().writeValueAsString(simpleMsg)
+                                        +"\nIS MAPPED TO>>>>>>>>>>>"
+                                    );
+
+
+
+                            Object map = new ObjectMapper().readValue(mapper.toJson(simpleMsg), Object.class);
+                            System.out.println(
+                                        new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(map));
+                            System.out.println("\n\n\ncustom message succefully mapped to facebook type");
                     }
-                    
-                    System.out.println("THIS CUSTOM MESSAGE TYPE.\n\n"
-                                +objMap.writerWithDefaultPrettyPrinter().writeValueAsString(simpleMsg)
-                                +"\nIS MAPPED TO>>>>>>>>>>>"
-                            );
-                    
-                    
-                    
-                    Object map = new ObjectMapper().readValue(mapper.toJson(simpleMsg), Object.class);
-                    System.out.println(
-                                new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(map));
-                    System.out.println("\n\n\ncustom message succefully mapped to facebook type");
+                   
               
                     IdMessageRecipient recipient = new IdMessageRecipient(item.getSender().getId());
                     

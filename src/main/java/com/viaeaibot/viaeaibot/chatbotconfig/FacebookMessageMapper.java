@@ -156,7 +156,7 @@ public class FacebookMessageMapper {
                             .setMessage_time(time)
                             .setMessageBody(body)
                             .setFileUrl(fileUrl)
-                            .setIsFile(isNull(fileUrl))
+                            .setIsFile(!isNull(fileUrl))
                             .setMessageType(msgType);
                         
                    
@@ -171,7 +171,11 @@ public class FacebookMessageMapper {
     private String hasAttachMent(MessageItem msg){
           
         if(!isNull(msg.getAttachments()) && msg.getAttachments().size()>0){
-            return msg.getAttachments().get(0).getUrl();
+            
+            String url = msg.getAttachments().get(0).getUrl();
+            System.out.println("the url of the file is"+url);
+           
+                 return url;
         }
         
         return null;
